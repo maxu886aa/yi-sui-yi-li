@@ -465,14 +465,14 @@
     var bgmPlaying = false;
     function startBGM() {
         if (!bgmPlaying) {
-            const wrapper = document.getElementById('bilibiliPlayer');
+            const audio = new Audio(); audio.src = 'happy_birthday.mp3'; audio.loop = true; audio.volume = 0.3; audio.play(); window._bgmAudio = audio;
             wrapper.innerHTML = '<iframe src="https://player.bilibili.com/player.html?bvid=BV1GjfoYvEag&autoplay=1&high_quality=1" allow="autoplay" style="border:none;" width="320" height="180"></iframe>';
             bgmPlaying = true;
         }
     }
     function stopBGM() {
         if (bgmPlaying) {
-            document.getElementById('bilibiliPlayer').innerHTML = '';
+            if(window._bgmAudio){window._bgmAudio.pause();window._bgmAudio=null}
             bgmPlaying = false;
         }
     }

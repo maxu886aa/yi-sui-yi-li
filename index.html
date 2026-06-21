@@ -465,14 +465,19 @@
     var bgmPlaying = false;
     function startBGM() {
         if (!bgmPlaying) {
-            const wrapper = document.getElementById('bilibiliPlayer');
-            wrapper.innerHTML = '<iframe src="https://player.bilibili.com/player.html?bvid=BV1GjfoYvEag&autoplay=1&high_quality=1" allow="autoplay" style="border:none;" width="320" height="180"></iframe>';
+            const audio = new Audio();
+            audio.src = 'happy_birthday.mp3';
+            audio.loop = true;
+            audio.volume = 0.3;
+            audio.play();
+            window._bgmAudio = audio;
             bgmPlaying = true;
         }
     }
     function stopBGM() {
-        if (bgmPlaying) {
-            document.getElementById('bilibiliPlayer').innerHTML = '';
+        if (bgmPlaying && window._bgmAudio) {
+            window._bgmAudio.pause();
+            window._bgmAudio = null;
             bgmPlaying = false;
         }
     }
@@ -593,6 +598,9 @@
     
 // 图片预加载
 for(let i=1;i<=93;i++){let img=new Image();img.src=i+'.jpg'}
+
+// 图片预加载
+for(let i=1;i<=93;i++){let img=new Image();img.src=i+".jpg"}
 </script>
 </body>
 </html>

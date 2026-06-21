@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>致郑冰莹的二十三岁补岁礼</title>
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'ZCOOL XiaoWei', serif;
+            background: linear-gradient(135deg, #fff5f7 0%, #fef3f0 25%, #fff9f5 50%, #f5f0ff 75%, #f0f7ff 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* 飘落花瓣星光 */
+        .petals {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .petal {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: radial-gradient(circle, rgba(255,182,193,0.6) 0%, rgba(255,218,185,0.3) 100%);
+            border-radius: 50%;
+            animation: fall linear infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+        }
+
+        /* 头部标题 */
+        .header {
+            text-align: center;
+            padding: 60px 20px 40px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .main-title {
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 2.8rem;
+            color: #d4758a;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(255,182,193,0.3);
+            animation: fadeInDown 1.5s ease-out;
+        }
+
+        .sub-title {
+            font-size: 1.2rem;
+            color: #b895a0;
+            letter-spacing: 2px;
+            animation: fadeInUp 1.5s ease-out 0.3s both;
+        }
+
+        .slogan {
+            margin-top: 25px;
+            font-size: 1rem;
+            color: #c9a0aa;
+            line-height: 2;
+            animation: fadeIn 2s ease-out 0.6s both;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* 信封容器网格 */
+        .envelope-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px 60px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 25px;
+            position: relative;
+            z-index: 10;
+        }
+
+        @media (max-width: 480px) {
+            .envelope-container {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 15px;
+                padding: 20px 15px 40px;
+            }
+        }
+
+        /* 信封外层容器 */
+        .envelope {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 4/3;
+            cursor: pointer;
+            perspective: 1000px;
+            opacity: 0;
+            animation: envelopeAppear 0.6s ease-out forwards;
+        }
+
+        /* 信封依次延迟入场 */
+        .envelope:nth-child(1) { animation-delay: 0.1s; }
+        .envelope:nth-child(2) { animation-delay: 0.15s; }
+        .envelope:nth-child(3) { animation-delay: 0.2s; }
+        .envelope:nth-child(4) { animation-delay: 0.25s; }
+        .envelope:nth-child(5) { animation-delay: 0.3s; }
+        .envelope:nth-child(6) { animation-delay: 0.35s; }
+        .envelope:nth-child(7) { animation-delay: 0.4s; }
+        .envelope:nth-child(8) { animation-delay: 0.45s; }
+        .envelope:nth-child(9) { animation-delay: 0.5s; }
+        .envelope:nth-child(10) { animation-delay: 0.55s; }
+        .envelope:nth-child(11) { animation-delay: 0.6s; }
+        .envelope:nth-child(12) { animation-delay: 0.65s; }
+        .envelope:nth-child(13) { animation-delay: 0.7s; }
+        .envelope:nth-child(14) { animation-delay: 0.75s; }
+        .envelope:nth-child(15) { animation-delay: 0.8s; }
+        .envelope:nth-child(16) { animation-delay: 0.85s; }
+        .envelope:nth-child(17) { animation-delay: 0.9s; }
+        .envelope:nth-child(18) { animation-delay: 0.95s; }
+        .envelope:nth-child(19) { animation-delay: 1s; }
+        .envelope:nth-child(20) { animation-delay: 1.05s; }
+        .envelope:nth-child(21) { animation-delay: 1.1s; }
+        .envelope:nth-child(22) { animation-delay: 1.15s; }
+        .envelope:nth-child(23) { animation-delay: 1.2s; }
+
+        @keyframes envelopeAppear {
+            from { opacity: 0; transform: translateY(30px) scale(0.8); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .envelope:hover { transform: translateY(-8px); transition: transform 0.3s ease; }
+
+        /* 信封主体长方形底部 */
+        .envelope-body {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 75%;
+            background: linear-gradient(135deg, #ffd6e0 0%, #f0d0f5 100%);
+            border-radius: 0 0 12px 12px;
+            border: 2px solid rgba(218, 165, 32, 0.3);
+            border-top: none;
+            box-shadow: 0 10px 30px rgba(180, 120, 180, 0.25), inset 0 2px 4px rgba(255, 255, 255, 0.4);
+            overflow: hidden;
+        }
+        /* 信封左侧折边 */
+        .envelope-body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ffd6e0 0%, #f0d0f5 100%);
+            clip-path: polygon(0 0, 20% 0, 0 100%);
+            border-right: 1px solid rgba(218, 165, 32, 0.2);
+        }
+        /* 信封右侧折边 */
+        .envelope-body::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ffd6e0 0%, #f0d0f5 100%);
+            clip-path: polygon(80% 0, 100% 0, 100% 100%);
+            border-left: 1px solid rgba(218, 165, 32, 0.2);
+        }
+
+        /* 三角信封翻盖 */
+        .envelope-flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(135deg, #ffcce0 0%, #e8c8f0 100%);
+            clip-path: polygon(0 0, 100% 0, 50% 100%);
+            border-radius: 12px 12px 0 0;
+            border: 2px solid rgba(218, 165, 32, 0.3);
+            border-bottom: none;
+            transform-origin: top center;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 2;
+            box-shadow: 0 4px 15px rgba(180, 120, 180, 0.2);
+        }
+        /* 翻盖烫金中线 */
+        .envelope-flap::before {
+            content: '';
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(218, 165, 32, 0.6), transparent);
+        }
+        /* 中间火漆圆点封口 */
+        .envelope-flap::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 24px;
+            height: 24px;
+            background: radial-gradient(circle, #ffb6c1 0%, #ff8fab 100%);
+            border-radius: 50%;
+            border: 2px solid rgba(218, 165, 32, 0.5);
+            box-shadow: 0 2px 8px rgba(255, 150, 180, 0.4);
+        }
+
+        .envelope:hover .envelope-flap {
+            transform: rotateX(-15deg);
+            box-shadow: 0 8px 20px rgba(180, 120, 180, 0.3);
+        }
+        .envelope.opened .envelope-flap {
+            transform: rotateX(-180deg);
+            z-index: 0;
+            box-shadow: none;
+        }
+
+        /* 23号特殊金色信封样式 */
+        .envelope.special .envelope-body {
+            background: linear-gradient(135deg, #ffe58a 0%, #ffd700 100%);
+            border-color: rgba(218, 165, 32, 0.5);
+        }
+        .envelope.special .envelope-flap {
+            background: linear-gradient(135deg, #ffdd66 0%, #ffd700 100%);
+            border-color: rgba(218, 165, 32, 0.5);
+        }
+        .envelope.special .envelope-flap::after {
+            background: radial-gradient(circle, #ff6b6b 0%, #ee5a5a 100%);
+            border-color: rgba(218, 165, 32, 0.7);
+        }
+
+        /* 信封文字类样式直接删除，不再定义 */
+
+        /* 弹窗遮罩 */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.4);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .modal-overlay.active { display: flex; opacity: 1; }
+
+        /* 弹窗信纸 */
+        .modal {
+            background: linear-gradient(135deg, #fff9f5 0%, #fff5f7 100%);
+            border-radius: 20px;
+            max-width: 500px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 40px 35px;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(212,117,138,0.3);
+            transform: scale(0.8) translateY(20px);
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .modal-overlay.active .modal { transform: scale(1) translateY(0); }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            width: 35px;
+            height: 35px;
+            border: none;
+            background: rgba(255,182,193,0.3);
+            border-radius: 50%;
+            font-size: 1.2rem;
+            color: #d4758a;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        .modal-close:hover { background: rgba(255,182,193,0.6); transform: rotate(90deg); }
+
+        .modal-greeting {
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 2rem;
+            color: #d4758a;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .modal-gift-name {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #c9a0aa;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed rgba(212,117,138,0.3);
+        }
+        .modal-content {
+            font-size: 1rem;
+            color: #7a6b70;
+            line-height: 2;
+            text-indent: 2em;
+        }
+
+        /* 23岁专属弹窗 */
+        .modal.special-modal {
+            background: linear-gradient(135deg, #fff9e6 0%, #fff5f7 50%, #f5f0ff 100%);
+            border: 2px solid rgba(255,215,0,0.3);
+        }
+        .modal.special-modal .modal-greeting {
+            font-size: 2.2rem;
+            background: linear-gradient(135deg, #ff6b6b, #ffa500, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .modal.special-modal .modal-gift-name {
+            color: #d4a574;
+            border-bottom-color: rgba(255,215,0,0.4);
+        }
+
+        /* 底部告白 */
+        .footer {
+            text-align: center;
+            padding: 40px 20px 60px;
+            position: relative;
+            z-index: 10;
+        }
+        .footer-text {
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 1.3rem;
+            color: #d4758a;
+            line-height: 2.5;
+            max-width: 400px;
+            margin: 0 auto;
+            animation: fadeInUp 1.5s ease-out 1.5s both;
+        }
+        .footer-sign {
+            margin-top: 20px;
+            font-size: 0.95rem;
+            color: #c9a0aa;
+            font-style: italic;
+        }
+
+        /* 音乐按钮 */
+        .music-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.8);
+            border: 2px solid rgba(255,182,193,0.5);
+            cursor: pointer;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255,182,193,0.3);
+        }
+        .music-btn:hover { transform: scale(1.1); box-shadow: 0 6px 20px rgba(255,182,193,0.5); }
+        .music-btn.playing { animation: musicSpin 3s linear infinite; }
+        @keyframes musicSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        /* 滚动条美化 */
+        .modal::-webkit-scrollbar { width: 6px; }
+        .modal::-webkit-scrollbar-track { background: rgba(255,182,193,0.1); border-radius: 3px; }
+        .modal::-webkit-scrollbar-thumb { background: rgba(255,182,193,0.5); border-radius: 3px; }
+        .modal::-webkit-scrollbar-thumb:hover { background: rgba(255,182,193,0.7); }
+
+        /* 手机适配 */
+        @media (max-width: 480px) {
+            .main-title { font-size: 2rem; }
+            .sub-title { font-size: 1rem; }
+            .modal { padding: 30px 25px; }
+            .modal-greeting { font-size: 1.6rem; }
+            .modal-content { font-size: 0.95rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- 花瓣背景 -->
+    <div class="petals" id="petals"></div>
+
+    <!-- 音乐开关 -->
+    <button class="music-btn" id="musicBtn" title="播放/暂停音乐">🎵</button>
+
+    <!-- 页面头部 -->
+    <header class="header">
+        <h1 class="main-title">致郑冰莹的二十三岁补岁礼</h1>
+        <p class="sub-title">一岁一礼，补齐你所有未被庆祝的岁岁年年</p>
+        <div class="slogan">
+            从前没人陪你过生日，<br>
+            那我就把你1–23岁，<br>
+            岁岁年年、全部温柔，一一补全给你。
+        </div>
+    </header>
+
+    <!-- 信封容器 -->
+    <div class="envelope-container" id="envelopeContainer"></div>
+
+    <!-- 底部告白 -->
+    <footer class="footer">
+        <div class="footer-text">
+            23份礼物，23段迟到的温柔。<br>
+            你的童年我没能参与，<br>
+            但你的现在和未来，我全权负责。<br>
+            生日快乐，冰冰宝宝。
+        </div>
+        <p class="footer-sign">—— 爱你的旭旭大王</p>
+    </footer>
+
+    <!-- 弹窗信件 -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal" id="modal">
+            <button class="modal-close" id="modalClose">✕</button>
+            <h2 class="modal-greeting" id="modalGreeting"></h2>
+            <p class="modal-gift-name" id="modalGiftName"></p>
+            <div class="modal-content" id="modalContent"></div>
+        </div>
+    </div>
+
+    <!-- 背景音乐 — Bilibili 嵌入 【生日快乐-房东的猫十周年演唱会】 -->
+    <div id="bilibiliPlayer" style="position:fixed; left:-9999px; top:0; width:1px; height:1px; pointer-events:none;"></div>
+    <script>
+    var bgmPlaying = false;
+    function startBGM() {
+        if (!bgmPlaying) {
+            const wrapper = document.getElementById('bilibiliPlayer');
+            wrapper.innerHTML = '<iframe src="https://player.bilibili.com/player.html?bvid=BV1GjfoYvEag&autoplay=1&high_quality=1" allow="autoplay" style="border:none;" width="320" height="180"></iframe>';
+            bgmPlaying = true;
+        }
+    }
+    function stopBGM() {
+        if (bgmPlaying) {
+            document.getElementById('bilibiliPlayer').innerHTML = '';
+            bgmPlaying = false;
+        }
+    }
+    </script>
+
+    <script>
+        // 音量已在 Web Audio 中控制
+
+        // 23份礼物完整数据
+        const gifts = [
+            {age:1,name:'旺仔牛奶',emoji:'🥛',content:'呱呱坠地的第一年，世界满是软糯与甜意。选了旺仔牛奶送给"一岁的你"，希望你往后的日子，都能像孩童时期一样，被甜蜜包裹，不用忧心烦恼，永远保有最纯粹的童真，被温柔与偏爱围绕。'},
+            {age:2,name:'袜子',emoji:'🧦',content:'两岁正是蹒跚学步的年纪，一双合脚的袜子能护住小脚，踏稳每一步路。就像我想陪在你身边，往后漫漫人生路，我愿做你的温暖底色，陪你走过春夏秋冬，每一步都走得安稳又踏实。'},
+            {age:3,name:'泡泡机',emoji:'🫧',content:'三岁的童年，最贪恋漫天飞舞的彩色泡泡，梦幻又美好。愿这台泡泡机，帮你拾起遗失的童年快乐。哪怕长大成人，也希望你眼里永远有星光，生活永远像泡泡一样，缤纷烂漫，满是欢喜。'},
+            {age:4,name:'饼干',emoji:'🍪',content:'小时候总贪恋一口口香甜的小点心，简单的美味就能收获满满幸福。酥香的饼干代表细碎的甜，希望往后的每一天，都有小美好接踵而至，舌尖有滋味，心中有暖意，烦恼都被香甜冲淡。'},
+            {age:5,name:'录音笔',emoji:'🎙️',content:'六岁开始慢慢学着表达心事，有些悄悄话总想好好留存。这支录音笔，可以收录你的欢声笑语、日常碎碎念，也愿往后你的每一份心情、每一句心声，都有人认真聆听、用心珍藏，再也不用独自藏起情绪。'},
+            {age:6,name:'橘色小猫挂件',emoji:'🐱',content:'七岁开始有了形影不离的小玩伴。软乎乎的橘猫挂件小巧又可爱，把它带在身边，就像我时时刻刻陪在你左右。小小的物件承载满满的陪伴，愿它陪你走过日常，岁岁年年，温暖不离。'},
+            {age:7,name:'零食大礼包',emoji:'🎁',content:'童年最幸福的时刻，莫过于拥有满满一兜爱吃的零食。这份零食大礼包，装满了各式各样的美味。想把世间所有可口的小食都送到你面前，愿你永远有美食相伴，吃的开心，活得自在。'},
+            {age:8,name:'冰箱贴',emoji:'🧲',content:'九岁开始留意生活里细碎的小美好，喜欢用小物件装点日常。一枚小小的冰箱贴，能点缀单调的居家角落。希望平凡的柴米油盐里，总能有这样小小的惊喜，让普通的日子变得温馨又有趣。'},
+            {age:9,name:'梳子',emoji:'🪮',content:'十岁褪去懵懂，渐渐出落得温婉动人。一把梳子，细细梳理青丝，也想为你拂去生活里的纷纷扰扰。愿你往后眉眼舒展，行事从容，无论遇到什么难题，都能安然自若，万事顺心。'},
+            {age:10,name:'杯垫',emoji:'☕',content:'十一岁，渐渐懂得珍惜身边的温暖与陪伴。杯垫护住温热的水杯，不让暖意流失。就像我想守住你生活里所有温柔，三餐四季，寒来暑往，愿永远有一杯暖饮、一份温情，常伴你的左右。'},
+            {age:11,name:'红包',emoji:'🧧',content:'十二岁是告别孩童、迈向少年的节点，红包承载着最质朴的祝福。这份小小的红包，不止是一点心意，更是期许：愿你想要的都拥有，期待的都如约而至，生活富足，好运常伴身旁。'},
+            {age:12,name:'拇指琴',emoji:'🎵',content:'十三岁心事渐多，音乐是治愈心情的良药。小巧的拇指琴，指尖轻拨就能流淌出温柔旋律。希望闲暇时，你能伴着乐声放松身心，让悦耳的美好填满生活，心境永远悠然恬淡。'},
+            {age:13,name:'祛湿茶',emoji:'🍵',content:'十四岁开始学着关照自己的身体，健康永远是一切美好的前提。特意准备了祛湿茶，是我藏在细节里的惦记。往后的日子，愿你好好照顾自己，身体轻盈康健，每日都元气满满。'},
+            {age:14,name:'牙刷',emoji:'🪥',content:'十五岁开始注重生活里的精致细节，干净清爽的状态，是美好生活的开始。一支普通的牙刷，代表着我对你日常点滴的关怀。愿你每天都能清爽自在，把平凡的小日子过得精致又舒心。'},
+            {age:15,name:'化妆笔',emoji:'💄',content:'十六岁正是爱美、绽放光彩的年纪，开始学着装扮自己，遇见更美的自己。这支化妆笔，可以勾勒你的美好眉眼。愿你永远自信明媚，大胆展现独属于你的魅力，活成自己最喜欢的模样。'},
+            {age:16,name:'乐高',emoji:'🧱',content:'十七岁满是憧憬，喜欢一点点拼凑梦想与美好。乐高需要耐心拼接，就像我们的故事，从相识到相知，一步一步慢慢搭建。未来的路还很长，我想和你一起，拼出专属于我们的浪漫未来。'},
+            {age:17,name:'相框',emoji:'🖼️',content:'十八岁是正式长大的年纪，有了数不清值得珍藏的瞬间。相框用来定格一张张笑脸、一段段回忆。我想把我们相处的所有美好画面都妥善收藏，让珍贵的时光永远停留，岁岁回忆，岁岁温柔。'},
+            {age:18,name:'巧克力',emoji:'🍫',content:'十九岁，情愫慢慢生根发芽，就像巧克力的滋味，初尝清甜，回味醇厚。浓郁香甜的巧克力，是我直白的心意。愿我们之间的爱意，如同这份味道，绵长浓厚，越品越暖心。'},
+            {age:19,name:'办公室小枕头',emoji:'💤',content:'二十岁开始为生活奔波，偶尔会疲惫、会劳累。这个柔软的小枕头，希望能在你忙碌疲惫时，给你一方小小的休憩天地。累了就停下来歇一歇，你不必一直坚强，我永远是你可以依靠的港湾。'},
+            {age:20,name:'零钱包',emoji:'👛',content:'二十一岁，生活渐渐变得忙碌琐碎，大大小小的物件也多了起来。小小的零钱包，帮你收纳零碎小物，让生活整整齐齐。愿繁杂的日常里，事事井井有条，也总有不期而遇的小惊喜。'},
+            {age:21,name:'首饰盒',emoji:'💍',content:'二十二岁，你开始拥有各式各样装点自己的小首饰，每一件都藏着独有的光彩。精致的首饰盒，为你收纳所有美好饰物，也守护你身上所有闪闪发光的特质。愿你永远精致闪耀，被美好簇拥。'},
+            {age:22,name:'Kiva假面骑士手办',emoji:'🦸',content:'二十三岁，即便走入成人世界，也请不要丢掉心底的热爱与热血。知道你喜欢假面骑士，便将这份热爱送到你手中。愿你永远保有少年般的赤诚与热血，坚守所爱，永远活得热烈又尽兴。'},
+            {age:23,name:'自制网站',emoji:'💝',content:'二十三岁，是我陪你走过这二十三载岁月的节点，也是我们故事崭新的篇章。这个亲手制作的专属网站，里面写满了我对你的爱意、回忆与期许。从前你没能好好过一次生日，往后的每一岁，我都不想缺席。这里是独属于你的秘密天地，藏着23份迟到的温柔，也藏着我全部的真心。从今往后，你的每一个生日，我都在；你的每一段人生，我都陪。生日快乐，我的郑冰莹。余生很长，请多指教。',special:true}
+        ];
+
+        // 生成信封：完全移除年龄文字DOM，信封空白无任何文字
+        const container = document.getElementById('envelopeContainer');
+        gifts.forEach((gift, index) => {
+            const envelope = document.createElement('div');
+            envelope.className = `envelope ${gift.special ? 'special' : ''}`;
+            envelope.dataset.index = index;
+            // 只保留翻盖+主体，删除.envelope-age文字元素
+            envelope.innerHTML = `
+                <div class="envelope-flap"></div>
+                <div class="envelope-body"></div>
+            `;
+            envelope.addEventListener('click', () => openModal(index));
+            container.appendChild(envelope);
+        });
+
+        // 弹窗控制逻辑
+        const modalOverlay = document.getElementById('modalOverlay');
+        const modal = document.getElementById('modal');
+        const modalClose = document.getElementById('modalClose');
+        const modalGreeting = document.getElementById('modalGreeting');
+        const modalGiftName = document.getElementById('modalGiftName');
+        const modalContent = document.getElementById('modalContent');
+
+        function openModal(index) {
+            const gift = gifts[index];
+            const envelope = document.querySelectorAll('.envelope')[index];
+            envelope.classList.add('opened');
+            modalGreeting.textContent = `${gift.age}岁的郑冰莹，你好`;
+            modalGiftName.textContent = `${gift.emoji} ${gift.name}`;
+            modalContent.textContent = gift.content;
+            gift.special ? modal.classList.add('special-modal') : modal.classList.remove('special-modal');
+            modalOverlay.classList.add('active');
+            if(navigator.vibrate) navigator.vibrate(50);
+            setTimeout(()=>envelope.classList.remove('opened'),1500);
+        }
+
+        function closeModal(){ modalOverlay.classList.remove('active'); }
+        modalClose.addEventListener('click', closeModal);
+        modalOverlay.addEventListener('click',e=>e.target===modalOverlay&&closeModal());
+        document.addEventListener('keydown',e=>e.key==='Escape'&&closeModal());
+
+        // 花瓣自动生成
+        const petalsContainer = document.getElementById('petals');
+        function createPetal(){
+            const petal = document.createElement('div');
+            petal.className = 'petal';
+            petal.style.left = Math.random()*100+'%';
+            petal.style.animationDuration = (Math.random()*10+10)+'s';
+            petal.style.animationDelay = Math.random()*5+'s';
+            const s = Math.random()*8+6;
+            petal.style.width = s+'px';
+            petal.style.height = s+'px';
+            petal.style.opacity = Math.random()*0.5+0.3;
+            petalsContainer.appendChild(petal);
+            setTimeout(()=>petal.remove(),20000);
+        }
+        for(let i=0;i<30;i++) setTimeout(createPetal,i*200);
+        setInterval(createPetal,800);
+
+        // 音乐播放 — 使用 Web Audio API 生成的氛围音乐
+        const musicBtn = document.getElementById('musicBtn');
+        let isPlaying = false;
+        musicBtn.addEventListener('click',()=>{
+            if(isPlaying){
+                stopBGM();
+                musicBtn.classList.remove('playing');
+            }else{
+                startBGM();
+                musicBtn.classList.add('playing');
+            }
+            isPlaying = !isPlaying;
+        })
+
+        // 进入页面自动播放 — 浏览器会拦截，等第一次点击页面任意位置时启动
+        document.addEventListener('click', function autoStart() {
+            if (!isPlaying) {
+                startBGM();
+                musicBtn.classList.add('playing');
+                isPlaying = true;
+            }
+            document.removeEventListener('click', autoStart);
+        }, { once: true });
+    
+// 图片预加载
+for(let i=1;i<=93;i++){let img=new Image();img.src=i+'.jpg'}
+
+// 图片预加载
+for(let i=1;i<=93;i++){let img=new Image();img.src=i+".jpg"}
+</script>
+</body>
+</html>
